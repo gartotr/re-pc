@@ -49,10 +49,10 @@
 
 <script>
 export default {
-    name: 'Header',
+    name: "Header",
     data() {
         return {
-            searchText: '',
+            searchText: "",
         }
     },
     methods: {
@@ -60,12 +60,24 @@ export default {
             //v-model绑定的input中的内容
             const { searchText } = this
             //搜素按钮要跳转的路径 空串说明false 没有值 直接跳转到/search 有值则加上参数跳转
-            const location = searchText ? `/search/${this.searchText}` : '/search'
 
-            this.$router.push({
-                name: 'search',
-                params: location,
-            })
+            const location = {
+                name: "search",
+            }
+
+            if (searchText) {
+                location.params = {
+                    searchText,
+                }
+            }
+
+            const { categoryName } = this.$route.query
+
+            if (categoryName) {
+                location.query = this.$route.query
+            }
+
+            this.$router.push(location)
         },
     },
 }

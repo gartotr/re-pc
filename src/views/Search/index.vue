@@ -1,5 +1,7 @@
 <template>
     <div>
+        <TypeNav></TypeNav>
+
         <div class="main">
             <div class="py-container">
                 <!--bread-->
@@ -526,12 +528,15 @@
 </template>
 
 <script>
-import SearchSelector from './SearchSelector/SearchSelector'
+import SearchSelector from "./SearchSelector/SearchSelector"
+import TypeNav from "@comps/TypeNav"
+
 export default {
-    name: 'Search',
+    name: "Search",
 
     components: {
         SearchSelector,
+        TypeNav,
     },
 }
 </script>
